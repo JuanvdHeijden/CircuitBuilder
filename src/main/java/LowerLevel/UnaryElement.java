@@ -19,4 +19,8 @@ public abstract class UnaryElement extends Expression{
     public Expression getRhs() {
         return rhs;
     }
+    
+    public void setRhs(Expression rhs) {
+        this.rhs = rhs;
+    }
 }

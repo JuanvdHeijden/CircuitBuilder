@@ -43,17 +43,15 @@ public class CircuitTest {
 
     @Test
     public void testX1andX2() {
-        And andOperation = new And();
         Variable x1 = new Variable(false);
         Variable x2 = new Variable(true);
-        andOperation.lhs = x1;
-        andOperation.rhs = x2;
+        And andOperation = new And(x1, x2);
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> 
         {
             throw new IllegalArgumentException("testX1andX2");
         });
         assertEquals(false, andOperation.getTruthValue());
-        andOperation.lhs = x2;
+        andOperation.setLhs(x2);
         assertEquals(true, andOperation.getTruthValue());
     }
     /** 
@@ -64,23 +62,19 @@ public class CircuitTest {
 
     @Test
     public void testX1andX2orX3(){
-        And andOperation = new And();
-        Or orOperation = new Or();
         Variable x1 = new Variable(false);
         Variable x2 = new Variable(true);
-        andOperation.lhs = x1;
-        andOperation.rhs = x2;
+        And andOperation = new And(x1, x2);
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> 
         {
             throw new IllegalArgumentException("testX1andX2orX3");
         }); 
-        orOperation.lhs = new Variable(andOperation.getTruthValue());
-        orOperation.rhs = x1;
+        Or orOperation = new Or(andOperation, x1);
         assertEquals(false, orOperation.getTruthValue());
-        andOperation.lhs = x1;
-        andOperation.rhs = x1;
-        orOperation.lhs = new Variable(andOperation.getTruthValue());
-        orOperation.rhs = x2;
+        andOperation.setLhs(x1);
+        andOperation.setRhs(x1);
+        orOperation.setLhs(andOperation);
+        orOperation.setRhs(x2);
         assertEquals(true, orOperation.getTruthValue());
         //fail("testX1andX2orX3");
     }
@@ -93,19 +87,16 @@ public class CircuitTest {
         
         Variable x1 = new Variable(false);
         Variable x2 = new Variable(true);
-        Or orOperation = new Or();
-        Not notOperation = new Not();
+        Not notOperation = new Not(x1);
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> 
         {
             throw new IllegalArgumentException("testAlwaysTrue");
         });
-        orOperation.lhs = x1;
-        notOperation.rhs = x1;
-        orOperation.rhs = new Variable(notOperation.getTruthValue());
+        Or orOperation = new Or(x1, notOperation);
         assertEquals(true, orOperation.getTruthValue());
-        orOperation.lhs = x2;
-        notOperation.rhs = x2;
-        orOperation.rhs = new Variable(notOperation.getTruthValue());
+        orOperation.setLhs(x2);
+        notOperation.setRhs(x2);
+        orOperation.setRhs(notOperation);
         assertEquals(true, orOperation.getTruthValue());
 	  //fail("testAlwaysTrue");
     }

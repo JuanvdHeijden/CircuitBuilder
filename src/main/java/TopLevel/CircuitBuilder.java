@@ -16,14 +16,16 @@ public class CircuitBuilder {
     }
     
     public static void main (String[] args){
-        Variable a1= new Variable(true);
-        Variable a2= new Variable(false);
-        Variable a3= new Variable(false);
+        Variable x1= new Variable(true);
+        Variable x2= new Variable(false);
+        Variable x3= new Variable(true);
+        Variable x4= new Variable(false);
         
-        And and = new And(a1, a2);
+        Not not1 = new Not(x3);
+        Or or1 = new Or(x2, not1);
+        And and1 = new And(x1, or1);
+        Or or2 = new Or(and1, x4);
         
-        Or or = new Or(and, a3);
-        
-        System.out.println(or.getTruthValue());
+        System.out.println(or2.getTruthValue());
     }
 }

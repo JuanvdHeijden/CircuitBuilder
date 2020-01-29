@@ -25,4 +25,12 @@ public abstract class BinaryElement extends Expression{
     public Expression getRhs() {
         return rhs;
     }
+    
+    public void setLhs(Expression lhs) {
+        this.lhs = lhs;
+    }
+    
+    public void setRhs(Expression rhs) {
+        this.rhs = rhs;
+    }
 }
