@@ -10,8 +10,14 @@ package LowerLevel;
  * @author s148192
  */
 public class Or extends BinaryElement{
+    
+    public Or (Expression lhs, Expression rhs) {
+        super(lhs, rhs);
+    }
+    
+    
     @Override
     public Boolean getTruthValue(){
-        return (lhs.getTruthValue() || rhs.getTruthValue());
+        return (this.getLhs().getTruthValue() || this.getRhs().getTruthValue());
     }
 }

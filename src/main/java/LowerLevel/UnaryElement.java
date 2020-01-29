@@ -10,5 +10,13 @@ package LowerLevel;
  * @author s148192
  */
 public abstract class UnaryElement extends Expression{
-    public Expression rhs;
+    private Expression rhs;
+    
+    public UnaryElement(Expression rhs){
+        this.rhs = rhs;
+    }
+    
+    public Expression getRhs() {
+        return rhs;
+    }
 }

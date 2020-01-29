@@ -10,6 +10,19 @@ package LowerLevel;
  * @author s148192
  */
 public abstract class BinaryElement extends Expression{
-    public Expression lhs;
-    public Expression rhs;
+    private Expression lhs;
+    private Expression rhs;
+    
+    public BinaryElement(Expression lhs, Expression rhs){
+        this.lhs = lhs;
+        this.rhs = rhs;
+    }
+    
+    public Expression getLhs() {
+        return lhs;
+    }
+    
+    public Expression getRhs() {
+        return rhs;
+    }
 }

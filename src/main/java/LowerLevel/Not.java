@@ -10,8 +10,13 @@ package LowerLevel;
  * @author s148192
  */
 public class Not extends UnaryElement{
+    
+    public Not (Expression rhs) {
+        super(rhs);
+    }
+    
     @Override
     public Boolean getTruthValue(){
-        return !rhs.getTruthValue();
+        return !this.getRhs().getTruthValue();
     }
 }

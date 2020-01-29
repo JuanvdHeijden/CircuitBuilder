@@ -10,8 +10,13 @@ package LowerLevel;
  * @author s148192
  */
 public class And extends BinaryElement{
+    
+    public And (Expression lhs, Expression rhs) {
+        super(lhs, rhs);
+    }
+    
     @Override
     public Boolean getTruthValue(){
-        return (lhs.getTruthValue() && rhs.getTruthValue());
+        return (this.getLhs().getTruthValue() && this.getRhs().getTruthValue());
     }
 }
