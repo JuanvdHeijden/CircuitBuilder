@@ -10,7 +10,7 @@ import LowerLevel.Not;
 import LowerLevel.UnaryElement;
 
 /**
- *
+ *  Concrete factory for all unary elements
  * @author s148192
  */
 public class UnaryElementFactory implements UnaryAbstractFactory<UnaryElement>{

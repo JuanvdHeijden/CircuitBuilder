@@ -6,7 +6,7 @@
 package LowerLevel;
 
 /**
- *
+ *  Not operator class
  * @author s148192
  */
 public class Not extends UnaryElement{

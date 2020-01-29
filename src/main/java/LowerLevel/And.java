@@ -6,7 +6,7 @@
 package LowerLevel;
 
 /**
- *
+ * And operator class
  * @author s148192
  */
 public class And extends BinaryElement{

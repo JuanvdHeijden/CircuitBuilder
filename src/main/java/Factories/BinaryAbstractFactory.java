@@ -8,7 +8,7 @@ package Factories;
 import LowerLevel.Expression;
 
 /**
- *
+ *  Abstract factory for all binary elements
  * @author s148192
  */
 public interface BinaryAbstractFactory<T> {

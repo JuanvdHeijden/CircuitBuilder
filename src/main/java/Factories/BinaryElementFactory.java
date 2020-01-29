@@ -8,7 +8,7 @@ package Factories;
 import LowerLevel.*;
 
 /**
- *
+ *  Concrete Factory for binary elements
  * @author s148192
  */
 public class BinaryElementFactory implements BinaryAbstractFactory<BinaryElement>{

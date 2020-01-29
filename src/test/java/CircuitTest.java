@@ -6,10 +6,12 @@
 
 import Factories.BinaryAbstractFactory;
 import Factories.BinaryElementFactory;
+import Factories.UnaryElementFactory;
 import LowerLevel.And;
 import LowerLevel.BinaryElement;
 import LowerLevel.Not;
 import LowerLevel.Or;
+import LowerLevel.UnaryElement;
 import LowerLevel.Variable;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -27,6 +29,8 @@ public class CircuitTest {
     
     public CircuitTest() {
     }
+    UnaryElementFactory unaryFactory = new UnaryElementFactory();
+    BinaryElementFactory binFactory = new BinaryElementFactory();
     
     @BeforeClass
     public static void setUpClass() {
@@ -49,7 +53,6 @@ public class CircuitTest {
         Variable x1 = new Variable(false);
         Variable x2 = new Variable(true);
         
-        BinaryElementFactory binFactory = new BinaryElementFactory();
         BinaryElement andOperation = binFactory.create("And", x1, x2);
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> 
         {
@@ -69,12 +72,12 @@ public class CircuitTest {
     public void testX1andX2orX3(){
         Variable x1 = new Variable(false);
         Variable x2 = new Variable(true);
-        And andOperation = new And(x1, x2);
+        BinaryElement andOperation = binFactory.create("And", x1, x2);
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> 
         {
             throw new IllegalArgumentException("testX1andX2orX3");
         }); 
-        Or orOperation = new Or(andOperation, x1);
+        BinaryElement orOperation = binFactory.create("Or", andOperation, x1);
         assertEquals(false, orOperation.getTruthValue());
         andOperation.setLhs(x1);
         andOperation.setRhs(x1);
@@ -92,12 +95,13 @@ public class CircuitTest {
         
         Variable x1 = new Variable(false);
         Variable x2 = new Variable(true);
-        Not notOperation = new Not(x1);
+        
+        UnaryElement notOperation = unaryFactory.create("Not", x1);
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> 
         {
             throw new IllegalArgumentException("testAlwaysTrue");
         });
-        Or orOperation = new Or(x1, notOperation);
+        BinaryElement orOperation = binFactory.create("Or", x1, notOperation);
         assertEquals(true, orOperation.getTruthValue());
         orOperation.setLhs(x2);
         notOperation.setRhs(x2);

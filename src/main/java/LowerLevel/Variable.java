@@ -6,7 +6,7 @@
 package LowerLevel;
 
 /**
- *
+ *  Variable class, contains a boolean "value"
  * @author s148192
  */
 public class Variable extends Expression{

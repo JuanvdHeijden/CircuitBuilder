@@ -6,7 +6,7 @@
 package LowerLevel;
 
 /**
- *
+ *  Or operator class
  * @author s148192
  */
 public class Or extends BinaryElement{

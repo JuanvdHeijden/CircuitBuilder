@@ -6,12 +6,12 @@
 package LowerLevel;
 
 /**
- *
+ *  Abstract binary operator class
  * @author s148192
  */
 public abstract class BinaryElement extends Expression{
-    private Expression lhs;
-    private Expression rhs;
+    private Expression lhs; // Left hand side of the expression
+    private Expression rhs; // Right hand side of the expression
     
     public BinaryElement(Expression lhs, Expression rhs){
         this.lhs = lhs;

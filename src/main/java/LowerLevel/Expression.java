@@ -6,9 +6,10 @@
 package LowerLevel;
 
 /**
- *
+ *  Abstract Expression
  * @author s148192
  */
 public abstract class Expression {
+    // Returns the Truth Value of this particular expression
     public abstract Boolean getTruthValue();
 }
