@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 
+import Factories.BinaryAbstractFactory;
+import Factories.BinaryElementFactory;
 import LowerLevel.And;
+import LowerLevel.BinaryElement;
 import LowerLevel.Not;
 import LowerLevel.Or;
 import LowerLevel.Variable;
@@ -45,7 +48,9 @@ public class CircuitTest {
     public void testX1andX2() {
         Variable x1 = new Variable(false);
         Variable x2 = new Variable(true);
-        And andOperation = new And(x1, x2);
+        
+        BinaryElementFactory binFactory = new BinaryElementFactory();
+        BinaryElement andOperation = binFactory.create("And", x1, x2);
         Throwable exception = assertThrows(IllegalArgumentException.class, () -> 
         {
             throw new IllegalArgumentException("testX1andX2");
