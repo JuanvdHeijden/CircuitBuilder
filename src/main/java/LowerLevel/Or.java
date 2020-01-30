@@ -20,4 +20,9 @@ public class Or extends BinaryElement{
     public Boolean getTruthValue(){
         return (this.getLhs().getTruthValue() || this.getRhs().getTruthValue());
     }
+    
+    @Override
+    public double getDoubleValue(){
+        return (1 - ((1 -this.getLhs().getDoubleValue())*(1- this.getRhs().getDoubleValue())));
+    }
 }

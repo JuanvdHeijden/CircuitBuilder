@@ -19,4 +19,8 @@ public class Not extends UnaryElement{
     public Boolean getTruthValue(){
         return !this.getRhs().getTruthValue();
     }
+    
+    public double getDoubleValue(){
+        return 1 - this.getRhs().getDoubleValue();
+    }
 }

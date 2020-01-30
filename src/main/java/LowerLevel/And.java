@@ -17,6 +17,10 @@ public class And extends BinaryElement{
     
     @Override
     public Boolean getTruthValue(){
-        return (this.getLhs().getTruthValue() && this.getRhs().getTruthValue());
+            return (this.getLhs().getTruthValue() && this.getRhs().getTruthValue());
+    }
+    
+    public double getDoubleValue(){
+        return (this.getLhs().getDoubleValue() * this.getRhs().getDoubleValue());
     }
 }
